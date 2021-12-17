@@ -1,0 +1,19 @@
+<div class="grid-container">
+  <mat-grid-list cols="7" rowHeight="80px">
+    <mat-grid-tile *ngFor="let day of days | async" [colspan]="1" [rowspan]="2">
+      <mat-card class="card" [ngClass]="{'disabled': day.disabled}" (click)="dayClicked(day)">
+        <div class="card-content">
+          <h4>{{day.date}}</h4>
+          <h5>{{day.dayName}}</h5>
+          <ul class="meetings" *ngIf="day.meetings as meetings">
+            <li *ngFor="let meeting of meetings"> 
+              <span class="ellipsis">
+                {{meeting.title}}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

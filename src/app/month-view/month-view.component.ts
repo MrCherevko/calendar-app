@@ -60,8 +60,10 @@ export class MonthViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(meeting => {
-      this.calendarService.setMeeting(day.id, meeting);
-      this.setDays();
+      if(meeting) {
+        this.calendarService.setMeeting(day.id, meeting);
+        this.setDays();
+      }
     });
 
   }
